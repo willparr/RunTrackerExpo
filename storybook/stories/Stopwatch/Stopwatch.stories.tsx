@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import StatBox from '../../../components/StatBox';
 import { View } from '../../../components/Themed';
 import CenterView from '../CenterView'; 
@@ -16,22 +16,12 @@ interface StatOptions {
     statName: string
 }
 const stats = [{stat, statName}, {stat, statName},{stat, statName},{stat, statName}]
-storiesOf('StatBox', module)
-  .add('with text', () => (
-      <StatBox statName={statName} stat={1.5}/>
-  ))
-  .add('multiple stats', () => (
+
+storiesOf('Stopwatch', module)
+.add('stopwatch', () => {
+    return(
       <View style={{flex: 1}}>
-          <StatBox statName={statName} stat={12.34} labelSize={"medium"}/>
-          <StatBox statName={statName} stat={stat} labelSize={"xlarge"}/>
-          <StatBox statName={statName} stat={stat} labelSize={"large"}/>
-          <StatBox statName={statName} stat={stat} labelSize={"small"}/>
+          <Stopwatch statName={"Time"} labelSize={"xlarge"}/>
       </View>
-    ))
-  .add('as grid', () => (
-    <FlatGrid
-        itemDimension={175}
-        data={stats}
-        renderItem={({ item }: { item: StatOptions }) => (<StatBox statName={item.statName} stat={item.stat}/>)}
-    />
-  ));
+    )
+})
