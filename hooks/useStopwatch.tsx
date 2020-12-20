@@ -6,6 +6,14 @@ const useStopwatch = (initialState = 0) => {
   const [isPaused, setIsPaused] = useState(false)
   const countRef = useRef<NodeJS.Timeout>()
 
+  const getFormattedTime = () => {
+    let seconds = Math.round(timer % 60)
+    let minutes = Math.round(timer / 60)
+    let hours = Math.round(minutes / 60)
+
+    return `${hours.toString()}:${minutes.toString()}:${seconds.toString()}`
+  }
+
 
   const handleStart = () => {
     setIsActive(true)
@@ -40,7 +48,7 @@ const useStopwatch = (initialState = 0) => {
     setTimer(0)
   }
 
-  return { timer, isActive, isPaused, handleStart, handlePause, handleResume, handleReset }
+  return { timer, isActive, isPaused, getFormattedTime, handleStart, handlePause, handleResume, handleReset }
 }
 
 export default useStopwatch

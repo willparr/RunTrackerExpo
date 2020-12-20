@@ -13,7 +13,7 @@ const stats = [{stat: 12.53, statName: "SPEED"}, {stat: 11.3, statName: "AVG SPE
 
 export default function EditScreenInfo({ path }: { path: string }) {
   return (
-    <View style={{flex: 1, flexDirection: 'column'}}>
+    <View style={{flex: 1, marginTop: 40, flexDirection: 'column'}}>
       <Stopwatch statWeight={"bolder"} statSize={"large"} statName={"TIME"}></Stopwatch>
       <StatBox statWeight={"bolder"} statSize={"xlarge"} statName={"DISTANCE"} stat={2.43}/>
       <FlatGrid
