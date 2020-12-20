@@ -1,9 +1,10 @@
 import * as WebBrowser from 'expo-web-browser';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { FlatGrid } from 'react-native-super-grid';
 
 import Colors from '../constants/Colors';
+import useLocationTracking from '../hooks/useLocationTracking';
 import StatBox from './StatBox';
 import Stopwatch from './Stopwatch';
 import { MonoText } from './StyledText';
@@ -12,6 +13,12 @@ import { Text, View } from './Themed';
 const stats = [{stat: 12.53, statName: "SPEED"}, {stat: 11.3, statName: "AVG SPEED"}]
 
 export default function EditScreenInfo({ path }: { path: string }) {
+  const {start, stop} = useLocationTracking()
+
+  useEffect(() => {
+    start()
+  },[])
+
   return (
     <View style={{flex: 1, marginTop: 40, flexDirection: 'column'}}>
       <Stopwatch statWeight={"bolder"} statSize={"large"} statName={"TIME"}></Stopwatch>
