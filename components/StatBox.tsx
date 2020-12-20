@@ -21,7 +21,7 @@ interface StatBoxProps {
 const textSize: Record<Size, number> = {
     'small': 22,
     'medium': 34,
-    'large': 64,
+    'large': 60,
     'xlarge': 80
 }
 
@@ -38,7 +38,7 @@ export default function StatBox(props: StatBoxProps) {
     console.debug(statName)
     console.debug(stat)
     return (
-            <Card containerStyle={{alignContent: 'center', margin: 0}}>
+            <Card containerStyle={{alignContent: 'center', margin: 0, padding: 10}}>
                 <View style={{alignItems: 'center'}}>
                     <Text style={{fontSize: textSize[statSize ?? 'medium'], fontWeight: textWeight[statWeight ?? 'normal']}}>
                         {stat.toString()}

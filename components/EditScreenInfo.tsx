@@ -1,44 +1,27 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
+import { FlatGrid } from 'react-native-super-grid';
 
 import Colors from '../constants/Colors';
+import StatBox from './StatBox';
+import Stopwatch from './Stopwatch';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
+const stats = [{stat: 12.53, statName: "SPEED"}, {stat: 11.3, statName: "AVG SPEED"}]
+
 export default function EditScreenInfo({ path }: { path: string }) {
   return (
-    <View>
-      <View style={styles.getStartedContainer}>
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
-          Open up the code for this screen:
-        </Text>
-        
-        <View
-          style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-          darkColor="rgba(255,255,255,0.05)"
-          lightColor="rgba(0,0,0,0.05)">
-          <MonoText>{path}</MonoText>
-        </View>
-
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
-          Change any of the text, save the file, and your app will automatically update.
-        </Text>
-      </View>
-
-      <View style={styles.helpContainer}>
-        <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-          <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
-            Tap here if your app doesn't automatically update after making changes
-          </Text>
-        </TouchableOpacity>
-      </View>
+    <View style={{flex: 1, flexDirection: 'column'}}>
+      <Stopwatch statWeight={"bolder"} statSize={"large"} statName={"TIME"}></Stopwatch>
+      <StatBox statWeight={"bolder"} statSize={"xlarge"} statName={"DISTANCE"} stat={2.43}/>
+      <FlatGrid
+        style={{margin: 0, padding: 0}}
+        itemDimension={175}
+        data={stats}
+        renderItem={({ item }: { item: any }) => (<StatBox statWeight={"bolder"} statSize={"large"} statName={item.statName} stat={item.stat}/>)}
+      />
     </View>
   );
 }

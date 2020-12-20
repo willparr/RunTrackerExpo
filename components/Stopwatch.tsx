@@ -39,7 +39,7 @@ export default function Stopwatch(props: StopWatchProps) {
     if(!isActive) handleStart()
     const {statName, stat, statSize, statWeight, labelSize, labelWeight} = props
     return (
-            <Card containerStyle={{alignContent: 'center', margin: 0}}>
+            <Card containerStyle={{alignContent: 'center', margin: 0, padding: 10}}>
                 <View style={{alignItems: 'center'}}>
                     <Text style={{fontSize: textSize[statSize ?? 'medium'], fontWeight: textWeight[statWeight ?? 'normal']}}>
                         {timer.toString()}
@@ -50,10 +50,4 @@ export default function Stopwatch(props: StopWatchProps) {
                 </Card.Title >
             </Card>
     );
-}
-
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet'
-  );
 }
