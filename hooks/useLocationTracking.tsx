@@ -3,6 +3,7 @@ import * as Permissions from 'expo-permissions';
 import * as Location from 'expo-location'
 import { EventRegister } from 'react-native-event-listeners';
 import * as TaskManager from 'expo-task-manager';
+import { useCache } from './useCache';
 const LOCATION_TASK_NAME = 'background-location-updates'
 const LOCATION_EVENT_NAME = 'location-event'
 
@@ -19,10 +20,15 @@ TaskManager.defineTask(LOCATION_TASK_NAME, ({ data, error }: { data: any, error:
   });
 
 const useLocationTracking = (initialState = {}) => {
-  const [location, setLocation] = useState(initialState)
-  const [isActive, setIsActive] = useState(false)
-  const [isPaused, setIsPaused] = useState(false)
-  const countRef = useRef<NodeJS.Timeout>()
+    const [location, setLocation] = useState(initialState)
+    const [isActive, setIsActive] = useState(false)
+    const [isPaused, setIsPaused] = useState(false)
+    const {cache, setCache} = useCache()
+    const countRef = useRef<NodeJS.Timeout>()
+
+    function registerRun(){
+        //set the cache 
+    }
 
     async function start(){
         console.debug('location tracking started')
