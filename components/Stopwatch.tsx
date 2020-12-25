@@ -39,7 +39,7 @@ export default function Stopwatch(props: StopWatchProps) {
     if(!isActive) handleStart()
     const {statName, stat, statSize, statWeight, labelSize, labelWeight} = props
     return (
-            <Card containerStyle={{alignContent: 'center', margin: 0, padding: 10}}>
+            <Card containerStyle={{alignContent: 'center'}}>
                 <View style={{alignItems: 'center'}}>
                     <Text style={{fontSize: textSize[statSize ?? 'medium'], fontWeight: textWeight[statWeight ?? 'normal']}}>
                         {getFormattedTime()}

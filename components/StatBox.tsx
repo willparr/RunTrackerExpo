@@ -38,7 +38,7 @@ export default function StatBox(props: StatBoxProps) {
     console.debug(statName)
     console.debug(stat)
     return (
-            <Card containerStyle={{alignContent: 'center', margin: 0, padding: 10}}>
+            <Card containerStyle={{alignContent: 'center'}}>
                 <View style={{alignItems: 'center'}}>
                     <Text style={{fontSize: textSize[statSize ?? 'medium'], fontWeight: textWeight[statWeight ?? 'normal']}}>
                         {stat.toString()}

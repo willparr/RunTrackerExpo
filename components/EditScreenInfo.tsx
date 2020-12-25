@@ -20,15 +20,11 @@ export default function EditScreenInfo({ path }: { path: string }) {
   },[])
 
   return (
-    <View style={{flex: 1, marginTop: 40, flexDirection: 'column'}}>
+    <View style={{flex: 1, flexGrow: 1, marginTop: 0, flexDirection: 'column', justifyContent: 'space-between'}}>
       <Stopwatch statWeight={"bolder"} statSize={"large"} statName={"TIME"}></Stopwatch>
       <StatBox statWeight={"bolder"} statSize={"xlarge"} statName={"DISTANCE"} stat={2.43}/>
-      <FlatGrid
-        style={{margin: 0, padding: 0}}
-        itemDimension={175}
-        data={stats}
-        renderItem={({ item }: { item: any }) => (<StatBox statWeight={"bolder"} statSize={"large"} statName={item.statName} stat={item.stat}/>)}
-      />
+      <StatBox statWeight={"bolder"} statSize={"large"} statName={"SPEED"} stat={12.41}/>
+      <StatBox statWeight={"bolder"} statSize={"large"} statName={"AVG SPEED"} stat={10.98}/>
     </View>
   );
 }
