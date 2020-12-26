@@ -1,6 +1,8 @@
+import { useNavigation } from '@react-navigation/native';
 import * as WebBrowser from 'expo-web-browser';
 import React, { useEffect } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Button } from 'react-native-elements';
 import { FlatGrid } from 'react-native-super-grid';
 
 import Colors from '../constants/Colors';
@@ -14,17 +16,19 @@ const stats = [{stat: 12.53, statName: "SPEED"}, {stat: 11.3, statName: "AVG SPE
 
 export default function EditScreenInfo({ path }: { path: string }) {
   const {start, stop} = useLocationTracking()
+  const navigation = useNavigation();
 
   useEffect(() => {
     start()
   },[])
 
   return (
-    <View style={{flex: 1, flexGrow: 1, marginTop: 0, flexDirection: 'column', justifyContent: 'space-between'}}>
+    <View style={{flex: 1, flexGrow: 1, marginTop:40, flexDirection: 'column', justifyContent: 'space-between'}}>
       <Stopwatch statWeight={"bolder"} statSize={"large"} statName={"TIME"}></Stopwatch>
       <StatBox statWeight={"bolder"} statSize={"xlarge"} statName={"DISTANCE"} stat={2.43}/>
       <StatBox statWeight={"bolder"} statSize={"large"} statName={"SPEED"} stat={12.41}/>
       <StatBox statWeight={"bolder"} statSize={"large"} statName={"AVG SPEED"} stat={10.98}/>
+      <Button type="solid" title="Stop Run" onPress={(e) => navigation.navigate('TabTwo')}></Button>
     </View>
   );
 }
