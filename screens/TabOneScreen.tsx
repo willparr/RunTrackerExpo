@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from '../components/EditScreenInfo';
+import {LiveTrackingScreen} from '../components/LiveTrackingScreen';
 import { Text, View } from '../components/Themed';
 
 export default function TabOneScreen() {
   return (
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <LiveTrackingScreen path="/screens/TabOneScreen.tsx" />
   );
 }
 

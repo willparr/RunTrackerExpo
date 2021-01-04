@@ -16,7 +16,7 @@ import { Text, View } from './Themed';
 const stats = [{stat: 12.53, statName: "SPEED"}, {stat: 11.3, statName: "AVG SPEED"}]
 
 
-export default function EditScreenInfo({ path }: { path: string }) {
+export function LiveTrackingScreen({ path }: { path: string }) {
   const {startTracking, stopTracking, isActive} = useLocationTracking()
   const {start, pause, timer, getFormattedTime} = useStopwatch()
   const navigation = useNavigation();
