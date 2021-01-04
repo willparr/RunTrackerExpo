@@ -40,6 +40,7 @@ const useLocationTracking = (initialState = {}) => {
             accuracy: Location.Accuracy.BestForNavigation
         })
         listenForLocationChanges()
+        setIsActive(true)
     }
 
     function isReceivingUpdates(){
@@ -54,10 +55,11 @@ const useLocationTracking = (initialState = {}) => {
     }
 
     async function stop(){
+        setIsActive(false)
         await Location.stopLocationUpdatesAsync(LOCATION_TASK_NAME)
     }
 
-    return { start, stop, location }
+    return { startTracking: start, stopTracking: stop, location, isActive }
 }
 
 async function isTrackingAllowed(){

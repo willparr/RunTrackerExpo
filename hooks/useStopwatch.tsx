@@ -14,10 +14,9 @@ const useStopwatch = (initialState = 0) => {
     return `${hours.toString()}:${minutes.toString()}:${seconds.toString()}`
   }
 
-
   const handleStart = () => {
+    if(isActive) return
     setIsActive(true)
-    setIsPaused(true)
     countRef.current = setInterval(() => {
       setTimer((timer) => timer + 1)
     }, 1000)
@@ -25,14 +24,14 @@ const useStopwatch = (initialState = 0) => {
 
   const handlePause = () => {
     if(!countRef.current){
+        console.debug('returning')
         return
     }
     clearInterval(countRef.current)
-    setIsPaused(false)
+    setIsActive(false)
   }
 
   const handleResume = () => {
-    setIsPaused(true)
     countRef.current = setInterval(() => {
       setTimer((timer) => timer + 1)
     }, 1000)
@@ -44,11 +43,10 @@ const useStopwatch = (initialState = 0) => {
     }
     clearInterval(countRef.current)
     setIsActive(false)
-    setIsPaused(false)
     setTimer(0)
   }
 
-  return { timer, isActive, isPaused, getFormattedTime, handleStart, handlePause, handleResume, handleReset }
+  return { timer, isActive, isPaused, getFormattedTime, start: handleStart, pause: handlePause, resume: handleResume, reset: handleReset}
 }
 
 export default useStopwatch

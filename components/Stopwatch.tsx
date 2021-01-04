@@ -35,14 +35,12 @@ const textWeight: Record<Weight, TextStyle['fontWeight']> = {
 
 
 export default function Stopwatch(props: StopWatchProps) {
-    const { timer, isActive, isPaused, getFormattedTime, handleStart, handlePause, handleResume, handleReset } = useStopwatch()
-    if(!isActive) handleStart()
     const {statName, stat, statSize, statWeight, labelSize, labelWeight} = props
     return (
             <Card containerStyle={{alignContent: 'center'}}>
                 <View style={{alignItems: 'center'}}>
                     <Text style={{fontSize: textSize[statSize ?? 'medium'], fontWeight: textWeight[statWeight ?? 'normal']}}>
-                        {getFormattedTime()}
+                        {stat}
                     </Text>
                 </View> 
                 <Card.Title>
